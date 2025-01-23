@@ -3,6 +3,7 @@ package DriverPackage;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Duration;
 
 import org.testng.annotations.Test;
 
@@ -13,15 +14,17 @@ public class DriverManager {
 
 	private static AppiumDriver driver;
 
-	public void driverLunch() {
+	public void driverLaunch() {
 
 		UiAutomator2Options options = new UiAutomator2Options();
 		options.setApp(
-				"C:\\Users\\Bharath V\\eclipse-workspace\\EdzterAndroid\\src\\main\\java\\Resources\\edzter_3_0_2_50.apk");
-		options.setDeviceName("Galaxy F41");
+				"C:\\Users\\Administrator\\Edzter_Android_Appium\\src\\main\\resources\\Resources\\edzter_3_0_2_50.apk");
+		options.setDeviceName("BharathPhone");
 
 		try {
 			driver = new AppiumDriver(new URI("http://127.0.0.1:4723").toURL(), options);
+
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		} catch (MalformedURLException | URISyntaxException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Driver Lunch issue " + e.getMessage());

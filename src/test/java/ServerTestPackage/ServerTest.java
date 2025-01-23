@@ -1,13 +1,23 @@
 package ServerTestPackage;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
 import ServerPackage.ServerClass;
 
 public class ServerTest extends ServerClass {
+	ServerClass sc = new ServerClass();
 
-	public void test() {
+//	@BeforeClass
+	public void serverStartTest() {
 
-		ServerClass sc = new ServerClass();
 		sc.serverStart();
+
+	}
+
+	//@AfterClass
+	public void serverStopTest() {
+
 		sc.serverStop();
 	}
 

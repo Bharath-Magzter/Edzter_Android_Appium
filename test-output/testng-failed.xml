@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="RunnerClass.RunnerMethod">
+      <class name="PropertiesPackage.PropertiesReadFile">
         <methods>
-          <include name="serverRun"/>
+          <include name="readData"/>
         </methods>
-      </class> <!-- RunnerClass.RunnerMethod -->
+      </class> <!-- PropertiesPackage.PropertiesReadFile -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
