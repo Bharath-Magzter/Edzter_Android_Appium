@@ -21,7 +21,7 @@ public class RunnerMethod {
 	ServerTest serverTest = new ServerTest();
 
 	LoginPageTest loginPageTest;
-	
+
 	ContinueWithEmailTest continueWithEmailTest;
 
 	@BeforeTest(groups = { "Regression" })
@@ -35,29 +35,33 @@ public class RunnerMethod {
 	public void loginPageRunner() throws IOException {
 
 		loginPageTest = new LoginPageTest(DriverManager.getDriver());
-		System.out.println("App Launched");
+		System.out.println("Testing Login Page...");
 
-		loginPageTest.letStartbtn_Method();
+		loginPageTest.clickLetStartButton();
 
-		System.out.println("Landed Login Page");
+		System.out.println("Clicked 'Let's Start' button");
+
+		boolean bannerStatus = loginPageTest.validateLoginPageBanner();
+
+		System.out.println("Banner Validation Status: " + bannerStatus);
+
+		loginPageTest.validateLoginOptions();
+		System.out.println("Login Options Validated");
+
 		
-		loginPageTest.loginPageBanner_Method();
-		
-		System.out.println("Login Page banner validation");
-
-		loginPageTest.loginPageOptions_Method();
 
 	}
-	
-	
-	
-	@Test (dependsOnMethods =  "loginPageRunner")
-	public void continueWithEmailRunner() throws InterruptedException {
-		
+
+	@Test(dependsOnMethods = "loginPageRunner")
+	public void continueWithEmailRunner() throws InterruptedException, IOException {
+
 		continueWithEmailTest = new ContinueWithEmailTest(DriverManager.getDriver());
+		
+		
 		continueWithEmailTest.clickContinueWithEmailButton();
 		
-		
+		continueWithEmailTest.performEmailValidation();
+
 	}
 
 	@AfterTest

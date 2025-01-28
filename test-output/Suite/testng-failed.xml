@@ -8,6 +8,7 @@
           <include name="loginPageRunner"/>
           <include name="serverRunnerStart"/>
           <include name="serverRunnerStop"/>
+          <include name="continueWithEmailRunner"/>
         </methods>
       </class> <!-- RunnerClass.RunnerMethod -->
     </classes>

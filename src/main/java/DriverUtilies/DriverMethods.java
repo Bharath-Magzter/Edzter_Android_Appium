@@ -29,11 +29,11 @@ public class DriverMethods {
 		}
 	}
 
-	public boolean waitAndDisplayed(WebElement element) {
-		boolean waitStatus = false ;
+	public  static boolean waitAndDisplayed(WebElement element) {
+		boolean waitStatus = false;
 		try {
-			waitStatus= wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
-			System.out.println("In Driver Utilies Methods waitStatus is " + waitStatus);
+			waitStatus = wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+			System.out.println("In Driver Utilies Methods waitStatus is " + element.getText() + " " + waitStatus);
 		} catch (Exception e) {
 			System.out.println("Error in waiting for visibility: " + e.getMessage());
 		}

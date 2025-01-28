@@ -16,10 +16,12 @@ public class LoginPageTest extends LoginPageClass {
 	
 	public void loginPageTest() throws IOException {
 		
-		letStartbtn_Method();
 		
-		loginPageBanner_Method();
-		loginPageOptions_Method();
+		clickLetStartButton();
+		validateLoginPageBanner();
+		validateLoginOptions();
+		
+		
 	}
 	
 	

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class PropertiesReadFile {
 
-	public String readData(String key) throws IOException {
+	public static String readData(String key) throws IOException {
 
 		Properties properties = new Properties();
 

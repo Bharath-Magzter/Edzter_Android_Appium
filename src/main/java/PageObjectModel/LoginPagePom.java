@@ -39,7 +39,7 @@ public class LoginPagePom {
 
 	public boolean loginPageBannerAction() {
 
-		boolean loginPageBannerElementStatus = false;
+		boolean  loginPageBannerElementStatus = false;
 		// return loginPageBanner_ele.isDisplayed();
 
 		loginPageBannerElementStatus = driverMethods.waitAndDisplayed(loginPageBanner_ele);

@@ -1,5 +1,7 @@
 package ContinueWithEmailTestPackage;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import ContinueWithEmail.ContinueWithEmailClass;
@@ -12,8 +14,9 @@ public class ContinueWithEmailTest extends ContinueWithEmailClass {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void continueWithEmailTest() throws InterruptedException {
+	public void continueWithEmailTest() throws InterruptedException, IOException {
 		clickContinueWithEmailButton();
+		performEmailValidation();
 
 	}
 
