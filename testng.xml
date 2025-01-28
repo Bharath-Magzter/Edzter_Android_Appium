@@ -6,14 +6,14 @@
 	<test name="Test">
 
 
-		<groups>
+		<!--<groups>
 			<run>
 
 				<include name="Regression"></include>
 
 			</run>
 
-		</groups>
+		</groups>-->
 
 
 		<classes>

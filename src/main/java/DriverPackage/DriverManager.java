@@ -17,9 +17,9 @@ public class DriverManager {
 	public void driverLaunch() {
 
 		UiAutomator2Options options = new UiAutomator2Options();
-		options.setApp(
-				"C:\\Users\\Administrator\\Edzter_Android_Appium\\src\\main\\resources\\Resources\\edzter_3_0_2_50.apk");
-		options.setDeviceName("BharathPhone");
+		options.setApp(System.getProperty("user.dir") + "/src/main/resources/Resources/edzter_3_0_2_50.apk");
+
+		options.setDeviceName("Galaxy F41");
 
 		try {
 			driver = new AppiumDriver(new URI("http://127.0.0.1:4723").toURL(), options);

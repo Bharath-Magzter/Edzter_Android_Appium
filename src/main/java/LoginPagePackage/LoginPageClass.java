@@ -25,6 +25,8 @@ public class LoginPageClass extends LoginPagePom implements LoginPageInterface {
 	private WebDriver driver;
 	PropertiesReadFile propertiesReadFile;
 
+	public static List<WebElement> loginOptionElements;
+
 	public LoginPageClass(WebDriver driver) {
 
 		super(driver);
@@ -50,7 +52,7 @@ public class LoginPageClass extends LoginPagePom implements LoginPageInterface {
 
 	@Override
 	public void loginPageOptions_Method() throws IOException {
-		List<WebElement> loginOptionElements = getLoginOptions();
+		loginOptionElements = getLoginOptions();
 
 		for (WebElement loginOptionElement : loginOptionElements) {
 			String eachLoginOption = loginOptionElement.getText();
@@ -81,6 +83,7 @@ public class LoginPageClass extends LoginPagePom implements LoginPageInterface {
 				break;
 			}
 		}
+		
 	}
 
 }

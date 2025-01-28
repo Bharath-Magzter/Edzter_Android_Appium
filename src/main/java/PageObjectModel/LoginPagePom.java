@@ -28,7 +28,7 @@ public class LoginPagePom {
 	private WebElement loginPageBanner_ele;
 
 	@FindBy(xpath = "//android.widget.LinearLayout//android.widget.LinearLayout//android.widget.TextView")
-	private List<WebElement> loginOptionsEle;
+	private static List<WebElement> loginOptionsEle;
 
 	public void letStartAction() {
 
@@ -48,7 +48,7 @@ public class LoginPagePom {
 		return loginPageBannerElementStatus;
 	}
 
-	public List<WebElement> getLoginOptions() {
+	public static List<WebElement> getLoginOptions() {
 		return loginOptionsEle;
 	}
 

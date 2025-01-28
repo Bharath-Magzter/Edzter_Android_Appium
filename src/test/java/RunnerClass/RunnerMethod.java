@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import ContinueWithEmailTestPackage.ContinueWithEmailTest;
 import DriverPackage.DriverManager;
 import LoginPageTestPackage.LoginPageTest;
 import ServerTestPackage.ServerTest;
@@ -20,6 +21,8 @@ public class RunnerMethod {
 	ServerTest serverTest = new ServerTest();
 
 	LoginPageTest loginPageTest;
+	
+	ContinueWithEmailTest continueWithEmailTest;
 
 	@BeforeTest(groups = { "Regression" })
 	public void serverRunnerStart() {
@@ -37,9 +40,24 @@ public class RunnerMethod {
 		loginPageTest.letStartbtn_Method();
 
 		System.out.println("Landed Login Page");
+		
+		loginPageTest.loginPageBanner_Method();
+		
+		System.out.println("Login Page banner validation");
 
 		loginPageTest.loginPageOptions_Method();
 
+	}
+	
+	
+	
+	@Test (dependsOnMethods =  "loginPageRunner")
+	public void continueWithEmailRunner() throws InterruptedException {
+		
+		continueWithEmailTest = new ContinueWithEmailTest(DriverManager.getDriver());
+		continueWithEmailTest.clickContinueWithEmailButton();
+		
+		
 	}
 
 	@AfterTest
