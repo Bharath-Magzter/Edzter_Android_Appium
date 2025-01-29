@@ -8,5 +8,13 @@ public interface ContinueWithEmailInterface {
 
     void validateEmailPageTexts() throws Exception;
 
-    void validateEmailInput();
+    void validateEmailInputWithOutData();
+    
+  //  void validateEmailInputPosAndNeg();
+
+	//void performEmailValidation(String emailInputValues) throws IOException;
+
+	void validateEmailInputPosAndNeg(String emailInputValues);
+
+	//void performEmailValidation(String emailInputValues) throws IOException;
 }

@@ -14,12 +14,19 @@ public class LoginPageTest extends LoginPageClass {
 	}
 	
 	
-	public void loginPageTest() throws IOException {
+	public void loginPageTestMethods() throws IOException {
 		
+		System.out.println("Testing Login Page..."); 
 		
 		clickLetStartButton();
-		validateLoginPageBanner();
+		System.out.println("Clicked 'Let's Start' button");
+		boolean bannerStatus = 	validateLoginPageBanner();
+		
+		System.out.println("Banner Validation Status: " + bannerStatus);
+
 		validateLoginOptions();
+		
+		System.out.println("Login Options Validated");
 		
 		
 	}

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import DriverUtilies.DriverMethods;
+import PageObjectModel.ContinueWithEmailPom;
 import PropertiesPackage.PropertiesReadFile;
 
 public abstract class BaseContinueWithEmailValidation {
@@ -20,8 +21,8 @@ public abstract class BaseContinueWithEmailValidation {
 		this.propertiesReadFile = new PropertiesReadFile();
 	}
 
-	public void validateTextPresence(List<WebElement> elements , String expectedText , String propertyKey) throws IOException {
-		
+	public void validateTextPresence(List<WebElement> elements, String expectedText, String propertyKey)
+			throws IOException {
 
 		for (WebElement element : elements) {
 			String actualText = element.getText();
@@ -36,5 +37,24 @@ public abstract class BaseContinueWithEmailValidation {
 
 	}
 
-	public abstract void performEmailValidation() throws IOException;
+	public void validateEmailInputFieldErrorMessages(WebElement emailInputFieldWebelement, String emailInputValues) {
+
+		// WebElement emailInputFieldWebelement =
+		// ContinueWithEmailPom.getEmailInputField();
+
+		emailInputFieldWebelement.sendKeys(emailInputValues);
+		ContinueWithEmailPom.getSubmitBtn();
+
+		ContinueWithEmailPom.getErrorMessageEle();
+		emailInputFieldWebelement.clear();
+
+	}
+
+	public abstract void performEmailValidation(String emailInputValues) throws IOException;
+
+	public void performEmailValidation() throws IOException {
+		// TODO Auto-generated method stub
+
+	}
+
 }

@@ -9,6 +9,7 @@
           <include name="serverRunnerStart"/>
           <include name="serverRunnerStop"/>
           <include name="continueWithEmailRunner"/>
+          <include name="continueWithEmailRunner"/>
         </methods>
       </class> <!-- RunnerClass.RunnerMethod -->
     </classes>

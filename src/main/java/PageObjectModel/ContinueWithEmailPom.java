@@ -28,11 +28,15 @@ public class ContinueWithEmailPom {
 	private List<WebElement> emailInputPageTextElements;
 
 	@FindBy(xpath = "//android.widget.Button[@resource-id=\"com.magzter.edzter:id/btn_email_submit\"]")
-	private WebElement submitBtn;
+	private static WebElement submitBtn;
 
 	@FindBy(xpath = "//android.widget.TextView[@resource-id=\"com.magzter.edzter:id/snackbar_text\"]")
-	private WebElement errorMessageEle;
+	private static WebElement errorMessageEle;
 
+	@FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.magzter.edzter:id/edt_email\"]")
+	private static WebElement emailInputField;
+	//
+	//android.widget.TextView[@resource-id="com.magzter.edzter:id/snackbar_text"]
 	public void getContinueWithEmail() {
 		continueWithEmailButton.click();
 	}
@@ -43,19 +47,23 @@ public class ContinueWithEmailPom {
 
 	}
 
-	public void getSubmitBtn() {
+	public static void getSubmitBtn() {
 		submitBtn.click();
 
 	}
 
-	public void getErrorMessageEle() {
+	public static void getErrorMessageEle() {
 
 		boolean errorMessageEleStatus = DriverMethods.waitAndDisplayed(errorMessageEle);
 		String errorMessageText = errorMessageEle.getText();
 
 		Assert.assertTrue(errorMessageEleStatus, errorMessageText + " Error message is not present on screen");
 
-		// Assert.assertTrue(isDisplayed, expectedText + " is not visible or in DOM");
+	}
 
+	public static WebElement getEmailInputField() {
+
+		return emailInputField;
+		
 	}
 }

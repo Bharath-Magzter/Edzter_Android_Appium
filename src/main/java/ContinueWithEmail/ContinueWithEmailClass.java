@@ -15,7 +15,6 @@ import PropertiesPackage.PropertiesReadFile;
 
 public class ContinueWithEmailClass extends BaseContinueWithEmailValidation implements ContinueWithEmailInterface {
 
-
 	private final ContinueWithEmailPom continueWithEmailPom;
 
 	public ContinueWithEmailClass(WebDriver driver) {
@@ -61,16 +60,34 @@ public class ContinueWithEmailClass extends BaseContinueWithEmailValidation impl
 	}
 
 	@Override
-	public void validateEmailInput() {
+	public void validateEmailInputWithOutData() {
 		continueWithEmailPom.getSubmitBtn();
 		continueWithEmailPom.getErrorMessageEle();
 
 	}
 
 	@Override
+	public void validateEmailInputPosAndNeg(String emailInputValues) {
+		WebElement emailInputFieldWebelement = continueWithEmailPom.getEmailInputField();
+
+		validateEmailInputFieldErrorMessages(emailInputFieldWebelement, emailInputValues);
+
+	}
+
+	@Override
 	public void performEmailValidation() throws IOException {
+
 		validateEmailPageTexts();
-		validateEmailInput();
+		
+		System.out.println("Started this method : validateEmailPageTexts");
+		validateEmailInputWithOutData();
+		System.out.println("Started this method : validateEmailInputWithOutData");
+	}
+
+	@Override
+	public void performEmailValidation(String emailInputValues) throws IOException {
+
+		validateEmailInputPosAndNeg(emailInputValues);
 
 	}
 
