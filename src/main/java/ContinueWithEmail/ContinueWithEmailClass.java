@@ -1,6 +1,7 @@
 package ContinueWithEmail;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,7 @@ public class ContinueWithEmailClass extends BaseContinueWithEmailValidation impl
 
 	public ContinueWithEmailClass(WebDriver driver) {
 
-		super();
+		super(driver);
 		this.continueWithEmailPom = new ContinueWithEmailPom(driver);
 
 	}
@@ -67,7 +68,7 @@ public class ContinueWithEmailClass extends BaseContinueWithEmailValidation impl
 	}
 
 	@Override
-	public void validateEmailInputPosAndNeg(String emailInputValues) {
+	public void validateEmailInputPosAndNeg(HashMap<String, String> emailInputValues) {
 		WebElement emailInputFieldWebelement = continueWithEmailPom.getEmailInputField();
 
 		validateEmailInputFieldErrorMessages(emailInputFieldWebelement, emailInputValues);
@@ -85,10 +86,11 @@ public class ContinueWithEmailClass extends BaseContinueWithEmailValidation impl
 	}
 
 	@Override
-	public void performEmailValidation(String emailInputValues) throws IOException {
+	public void performEmailValidation(HashMap<String, String> emailInputValues) throws IOException {
 
-		validateEmailInputPosAndNeg(emailInputValues);
+		validateEmailInputPosAndNeg( emailInputValues);
 
 	}
 
+	
 }

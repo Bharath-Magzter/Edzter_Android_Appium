@@ -3,6 +3,7 @@ package PageObjectModel;
 import java.nio.file.attribute.AclEntry;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ import DriverUtilies.DriverMethods;
 
 public class ContinueWithEmailPom {
 
-	protected WebDriver driver;
+	protected static WebDriver driver;
 
 	public ContinueWithEmailPom(WebDriver driver) {
 		this.driver = driver;
@@ -35,8 +36,13 @@ public class ContinueWithEmailPom {
 
 	@FindBy(xpath = "//android.widget.EditText[@resource-id=\"com.magzter.edzter:id/edt_email\"]")
 	private static WebElement emailInputField;
-	//
-	//android.widget.TextView[@resource-id="com.magzter.edzter:id/snackbar_text"]
+
+	@FindBy(xpath = "//android.widget.Button[@resource-id=\"com.magzter.edzter:id/btn_email\"]")
+	private static WebElement verifyButtonOnOTPPage;
+
+	// android.widget.Button[@resource-id="com.magzter.edzter:id/btn_email"]
+	//// android.widget.Button[@resource-id="com.magzter.edzter:id/btn_email"]
+	// android.widget.TextView[@resource-id="com.magzter.edzter:id/snackbar_text"]
 	public void getContinueWithEmail() {
 		continueWithEmailButton.click();
 	}
@@ -52,18 +58,43 @@ public class ContinueWithEmailPom {
 
 	}
 
-	public static void getErrorMessageEle() {
+	public static boolean getErrorMessageEle() {
 
 		boolean errorMessageEleStatus = DriverMethods.waitAndDisplayed(errorMessageEle);
 		String errorMessageText = errorMessageEle.getText();
 
 		Assert.assertTrue(errorMessageEleStatus, errorMessageText + " Error message is not present on screen");
 
+		return errorMessageEleStatus;
 	}
 
 	public static WebElement getEmailInputField() {
 
 		return emailInputField;
+
+	}
+
+	public static WebElement getVerifyButtonOnOTPPage() {
+
+		return verifyButtonOnOTPPage;
+	}
+
+	public static boolean isElementPresent(String xpath) {
+		try {
+			return driver.findElements(By.xpath(xpath)).size() > 0;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public static boolean getErrorMessageStatus() {
+		try {
+			return  errorMessageEle.isDisplayed();
+			
+		} catch (Exception e) {
+			return false;
+		}
 		
+
 	}
 }

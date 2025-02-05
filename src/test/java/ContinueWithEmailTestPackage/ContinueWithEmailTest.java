@@ -1,6 +1,7 @@
 package ContinueWithEmailTestPackage;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
 
@@ -12,7 +13,7 @@ public class ContinueWithEmailTest extends ContinueWithEmailClass {
 	public ContinueWithEmailTest(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
-		System.out.println("Testing Continue with Email Login Page...");
+		// System.out.println("Testing Continue with Email Login Page...");
 	}
 
 	public void continueWithEmailTestMethods() throws InterruptedException, IOException {
@@ -21,9 +22,10 @@ public class ContinueWithEmailTest extends ContinueWithEmailClass {
 
 		performEmailValidation();
 	}
-	public void continueWithEmailTestMethods(String emailInputValues) throws InterruptedException, IOException {
 
-		
+	public void continueWithEmailTestMethods(HashMap<String, String> emailInputValues)
+			throws InterruptedException, IOException {
+
 		performEmailValidation(emailInputValues);
 		System.out.println("Validate the email input field");
 

@@ -1,6 +1,8 @@
 package RunnerClass;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -15,9 +17,11 @@ import org.testng.annotations.Test;
 import ContinueWithEmailTestPackage.ContinueWithEmailTest;
 import DriverPackage.DriverManager;
 import LoginPageTestPackage.LoginPageTest;
+import ReadJsonDataPackage.DataProviders;
+import ReadJsonDataPackage.ReadJsonData;
 import ServerTestPackage.ServerTest;
 
-public class RunnerMethod {
+public class RunnerMethod extends ReadJsonData {
 
 	ServerTest serverTest = new ServerTest();
 
@@ -38,18 +42,6 @@ public class RunnerMethod {
 		loginPageTest = new LoginPageTest(DriverManager.getDriver());
 
 		loginPageTest.loginPageTestMethods();
-//		System.out.println("Testing Login Page...");
-//
-//		loginPageTest.clickLetStartButton();
-//
-//		System.out.println("Clicked 'Let's Start' button");
-//
-//		boolean bannerStatus = loginPageTest.validateLoginPageBanner();
-//
-//		System.out.println("Banner Validation Status: " + bannerStatus);
-//
-//		loginPageTest.validateLoginOptions();
-//		System.out.println("Login Options Validated");
 
 	}
 
@@ -59,8 +51,9 @@ public class RunnerMethod {
 		continueWithEmailTest.continueWithEmailTestMethods();
 	}
 
-	@Test(dependsOnMethods = "loginPageRunner", dataProvider = "loginData", priority = 2) //
-	public void continueWithEmailRunner(String emailInputValues) throws InterruptedException, IOException {
+	@Test(dependsOnMethods = "loginPageRunner",  dataProvider = "emailData",dataProviderClass = DataProviders.class, priority = 2) //
+	public void continueWithEmailRunner(HashMap<String, String> emailInputValues)
+			throws InterruptedException, IOException {
 
 		continueWithEmailTest.continueWithEmailTestMethods(emailInputValues);
 
@@ -71,14 +64,6 @@ public class RunnerMethod {
 		serverTest.serverStopTest();
 		System.out.println("Server Stopped");
 
-	}
-
-	@DataProvider(name = "loginData")
-	public Object[][] getLoginData() {
-
-		return new Object[][] { { "3456789" }, { "fudfidf#$%$^@gmail.com" }, {"2334545678@#$%^@gmail.com"}
-
-		};
 	}
 
 }
